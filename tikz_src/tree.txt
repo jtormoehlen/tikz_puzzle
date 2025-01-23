@@ -1,0 +1,11 @@
+def draw_tree(level, length) #| def draw_tree(length, level):
+if level > 0: #| if level >= 0:
+turtle.forward(length) #| turtle.forward(length / 2)
+turtle.right(60) #| turtle.right(45)
+draw_tree(length / 2, level - 1) #| draw_tree(length, level - 1)
+turtle.left(120) #| turtle.left(90)
+draw_tree(length / 2, level - 1) #| draw_tree(length, level - 1)
+turtle.right(45) #| turtle.right(60)
+draw_tree(length / 2, level - 1) #| draw_tree(length, level - 1) #*
+else: #*
+return turtle.forward(length) #| return turtle.forward(length / 2) #*

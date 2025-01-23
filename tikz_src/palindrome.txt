@@ -1,0 +1,6 @@
+def palindromic(sequence, left, right) #| def palindromic(sequence, left=0, right=-1):
+if left >= right: #| if right < left: #*
+return True #| return False 
+if sequence[left] != sequence[right]: #| if sequence[left] == sequence[right]:
+return True #| return False #*
+return palindromic(sequence, right, left) #| return palindromic(sequence, left + 1, right - 1)

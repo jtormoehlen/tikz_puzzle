@@ -1,0 +1,125 @@
+\begin{tikzpicture}
+
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    return True 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    1a
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect101) at (rect1.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     return False 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    1b
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    return palindromic(sequence, right, left) 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    2a
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect201) at (rect2.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     return palindromic(sequence, left + 1, right - 1)
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    2b
+    \end{minipage}
+    };
+    \node[draw,dashed, rounded corners, fill=red!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    return True 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    3a
+    \end{minipage}
+    };
+    \node[draw,dashed, rounded corners, fill=red!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect301) at (rect3.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     return False 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    3b
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    if sequence[left] != sequence[right]: 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    4a
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     if sequence[left] == sequence[right]:
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    4b
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    def palindromic(sequence, left, right) 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    5a
+    \end{minipage}
+    };
+    \node[draw, rounded corners, fill=blue!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect501) at (rect5.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     def palindromic(sequence, left=0, right=-1):
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    5b
+    \end{minipage}
+    };
+    \node[draw,dashed, rounded corners, fill=red!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+    if left >= right: 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    6a
+    \end{minipage}
+    };
+    \node[draw,dashed, rounded corners, fill=red!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect601) at (rect6.east) {
+    \begin{minipage}[c]{6.5cm}
+    \begin{lstlisting}[language=Python, breaklines=true]
+     if right < left: 
+    \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[c]{0.5cm}
+    6b
+    \end{minipage}
+    };
+    
+
+    \end{tikzpicture}

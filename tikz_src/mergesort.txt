@@ -1,0 +1,22 @@
+def mergesort(numbers):
+mid = len(numbers) // 2
+if len(numbers) == 0: #| if len(numbers) < 2:
+return numbers #| return None
+left = list(numbers[:mid]) #| left = numbers[:mid]
+right = numbers[mid:] #| right = list(numbers[mid:])
+left = mergesort(left)
+right = mergesort(right)
+return merge(left, right) #| merge(left, right)
+def merge(left, right):
+merged = []
+i, j = 0, 0
+while left and right: #| while i < len(left) and j < len(right):
+if left[i] <= right[j]:
+merged.append(left[i]) #| merged.append(left.pop(0))
+i += 1
+else:
+merged.append(right[j]) #| merged.append(right.pop(0))
+j += 1
+merged.extend(left[i:]) #*
+merged.extend(right[j:]) #*
+return merged

@@ -1,0 +1,16 @@
+def drawPath(n, x):
+if n == 0: #| if n == 1:
+drawLine(x) #| drawLine(x/3)
+return 0 #| return 1 #*
+else:
+drawPath(n-1, x/4) #| drawPath(n-1, x/3) #+
+turnLeft(30) #| turnRight(45) #*
+turnRight(90) #| turnLeft(60) #*
+return x #*
+
+
+def p(i, j):
+# if j == 0 or j == i: #| if j == 1 or j == i+1:
+# return 1 #| return 0
+# else: #*
+# return p(i-1, j-1) + p(i-1, j) #| return p(i, j-1) + p(i-1, j-1)
