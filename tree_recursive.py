@@ -5,7 +5,7 @@ def draw_blossom():
     # Turtle initialisieren
     
     # Farbe setzen
-    turtle.color("red")
+    turtle.color('red')
     
     # Ausgangsposition speichern
     start_position = turtle.position()
@@ -19,7 +19,7 @@ def draw_blossom():
     turtle.penup()  # Stift anheben, um nichts zu zeichnen
     turtle.goto(start_position)  # Zurück zur Ausgangsposition
     turtle.pendown()  # Stift wieder absenken, falls man weiter zeichnen möchte
-    turtle.color("black")
+    turtle.color('black')
 
 
 def draw_tree(branch_length, level):

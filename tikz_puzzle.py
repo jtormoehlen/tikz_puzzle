@@ -8,6 +8,17 @@ OR = '#|'
 ZEROPLUS = '#*'
 ONEPLUS = '#+'
 
+node = r"""\node[draw,$opt rounded corners, fill=$color!20, minimum width=$lenFac*\rectWidth, minimum height=\rectHeight, anchor=$anch] (rect$recNum) at (rect$prevRec.$susp) {
+\begin{minipage}[c]{$snipLencm}
+\begin{lstlisting}[language=Python, breaklines=true]
+$snippet
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{$numLencm}
+$enum
+\end{minipage}
+};"""
+
 # Source code as string
 tikz_ins = [
     'binomial',
@@ -28,18 +39,6 @@ for tikz_in in tikz_ins:
     # s = trenne_zeilen_nach_suffix(s)
     # s = einfuege_zeilenumbruch(s)
 
-    node = r"""\node[draw,$opt rounded corners, fill=$color!20, minimum width=$lenFac*\rectWidth, minimum height=\rectHeight, anchor=$anch] (rect$recNum) at (rect$prevRec.$susp) {
-    \begin{minipage}[c]{$snipLencm}
-    \begin{lstlisting}[language=Python, breaklines=true]
-    $snippet
-    \end{lstlisting}
-    \end{minipage}
-    \begin{minipage}[c]{$numLencm}
-    $enum
-    \end{minipage}
-    };
-    """
-
     outputs = []
     inputs = {'$recNum': 1, '$prevRec': 0,
             '$xpos': 0, '$ypos': 0,
@@ -47,20 +46,20 @@ for tikz_in in tikz_ins:
             '$numLen': 0.5, '$snipLen': 14.5,
             '$anch': 'north west', '$susp': 'south west',
             '$lenFac': 1, '$opt': '',
-            '$color': 'blue'}
+            '$color': 'lightgray'}
     grouped = False
 
     for line in file_content.splitlines():
         if ZEROPLUS in line:
             inputs['$opt'] = 'dashed,'
             line = line.replace(ZEROPLUS, '')
-            inputs['$color'] = 'red'
+            # inputs['$color'] = 'red'
         elif ONEPLUS in line:
             inputs['$opt'] = 'dashed,'
             line = line.replace(ONEPLUS, '')
         else:
             inputs['$opt'] = ''
-            inputs['$color'] = 'blue'
+            # inputs['$color'] = 'blue'
 
         parts = line.split(OR)
         if len(parts) == 2:
@@ -92,18 +91,18 @@ for tikz_in in tikz_ins:
             outputs.append(leftNode)
 
             rightNode = node
-            rightNodeInputs = {'$recNum': inputs['$recNum']*100+1, 
+            rightNodeInputs = {'$recNum': inputs['$recNum']*100+1,
                             '$prevRec': inputs['$recNum'],
-                            '$xpos': 0, 
+                            '$xpos': 0,
                             '$ypos': 0,
-                            '$enum': str(inputs['$enum']) + 
-                            utl.number_to_letters(2), 
+                            '$enum': str(inputs['$enum']) +
+                            utl.number_to_letters(2),
                             '$snippet': parts[1],
-                            '$numLen': inputs['$numLen'], 
+                            '$numLen': inputs['$numLen'],
                             '$snipLen': 6.5,
-                            '$anch': 'west', 
+                            '$anch': 'west',
                             '$susp': 'east',
-                            '$lenFac': 0.5, 
+                            '$lenFac': 0.5,
                             '$opt': inputs['$opt'],
                             '$color': inputs['$color']}
 

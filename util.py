@@ -2,77 +2,77 @@ import random as rd
 import re
 
 
-def remove_indents(multiLineString):
+def remove_indents(multi_line_string):
     # Split string by parts
-    lines = multiLineString.splitlines()
+    lines = multi_line_string.splitlines()
     # Remove pre blanks
-    newLines = [line.lstrip() for line in lines]
+    new_lines = [line.lstrip() for line in lines]
     # Merge strings back together
-    return '\n'.join(newLines)
+    return '\n'.join(new_lines)
 
 
-def shuffle_lines(multiLineString):
+def shuffle_lines(multi_lines_string):
     # Split string by parts
-    lines = multiLineString.splitlines()
+    lines = multi_lines_string.splitlines()
     # Shuffle lines random
     rd.shuffle(lines)
     # Merge strings back together
     return '\n'.join(lines)
 
 
-def conc_lines_suffix(multiLineString):
+def conc_lines_suffix(multi_line_string):
     # Split string by parts
-    lines = multiLineString.splitlines()
+    lines = multi_line_string.splitlines()
 
-    suffixDict = {}
+    suffix_dict = {}
 
     for line in lines:
         # Search for suffix with #\d
         suffix = ''
         parts = line.rsplit(' ', 1)  # Split at last blank
         if len(parts) > 1:
-            suffixCand = parts[-1]
-            if suffixCand.startswith('#') and suffixCand[1:].isdigit():
-                suffix = suffixCand
+            suffix_cand = parts[-1]
+            if suffix_cand.startswith('#') and suffix_cand[1:].isdigit():
+                suffix = suffix_cand
 
         # Add line with suffix to dictionary
         if suffix:
-            if suffix not in suffixDict:
-                suffixDict[suffix] = []
-            suffixDict[suffix].append(
+            if suffix not in suffix_dict:
+                suffix_dict[suffix] = []
+            suffix_dict[suffix].append(
                 parts[0] + ' ' + suffix)  # Dont remove suffix
         else:
             # Add line without changes if no valid Suffix found
             # Add empty group for line without suffix
-            if '' not in suffixDict:  
-                suffixDict[''] = []
-            suffixDict[''].append(line)
+            if '' not in suffix_dict:  
+                suffix_dict[''] = []
+            suffix_dict[''].append(line)
 
     # Connect lines with same suffix
-    connectedLines = []
-    for linesWithSuffix in suffixDict.values():
-        connectedLines.append(' '.join(linesWithSuffix))
+    connected_lines = []
+    for lines_with_suffix in suffix_dict.values():
+        connected_lines.append(' '.join(lines_with_suffix))
 
-    return '\n'.join(connectedLines)
+    return '\n'.join(connected_lines)
 
 
 def insert_new_line(text):
     # Regex pattern for #Zahl followed by a blank and more optional chars
-    muster = r'(#[0-9]+ )'
+    pattern = r'(#[0-9]+ )'
 
     # Insert new line to pattern
-    newLineAdded = re.sub(muster, r'\1\n', text)
+    new_line_added = re.sub(pattern, r'\1\n', text)
 
-    return newLineAdded
+    return new_line_added
 
 
 def edit_pattern(input_string, sequence='', pattern=r'#\d+\s*'):
     # Regex for finding #Zahl plus blank
 
     # Replace pattern by empty string
-    resultString = re.sub(pattern, sequence, input_string)
+    result_string = re.sub(pattern, sequence, input_string)
 
-    return resultString
+    return result_string
 
 
 def split_string(input_string):
@@ -89,7 +89,7 @@ def split_string(input_string):
 
 def number_to_letters(n):
     if n < 1:
-        return ""
+        return ''
 
     letters = []
 
@@ -107,10 +107,6 @@ def number_to_letters(n):
     return ''.join(reversed(letters))
 
 
-def dummy():
-    print("Die Funktion dummy() wurde ausgefuehrt.")
-
-
 def check_and_execute(input_string):
     # RegEx for #+Zahl
     pattern = r'#\d+'
@@ -120,7 +116,7 @@ def check_and_execute(input_string):
 
     # Check for multiple appearances
     if len(matches) > 1:
-        dummy()
+        pass
 
 
 # Function to read the file and store its content as a string
@@ -132,8 +128,8 @@ def read_file(file_path):
             content = file.read()
             return content
     except FileNotFoundError:
-        print(f"The file {file_path} was not found.")
+        print(f'The file {file_path} was not found.')
         return None
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f'An error occurred: {e}')
         return None
