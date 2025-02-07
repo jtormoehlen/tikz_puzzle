@@ -1,7 +1,12 @@
-def is_palindrome(sequence, left, right) #| def is_palindrome(sequence, left=0, right=-1):
-if left >= right: #| if right < left: #*
-return True #| return False
-if sequence[left] != sequence[right]: #| if sequence[left] == sequence[right]:
-return True #| return False #*
-return is_palindrome(sequence, left, right) #| return is_palindrome(sequence, left + 1, right - 1)
-else: #*
+def find_longest_palindromic_sequence(dna, start=0, end=None, longest_seq=''):
+if end is None:
+end = len(dna)
+if start >= end:
+return longest_seq
+for length in range(2, end - start + 1):
+subseq = dna[start:start + length]
+complement = get_complement(subseq)
+if is_palindromic(subseq) or subseq == complement:
+if len(subseq) > len(longest_seq):
+longest_seq = subseq
+return find_longest_palindromic_sequence(dna, start + 1, end, longest_seq)
