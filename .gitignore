@@ -1,2 +1,15 @@
+# compile trash
 /__pycache__/
 test.py
+
+# graph related project
+graph.py
+graph_visualizer.py
+single_source_shortest_path.py
+que.py
+dna_palindrome.py
+eq_palindrome.py
+dna.py
+
+# temp test files
+/alt/
