@@ -4,6 +4,7 @@ import util as utl
 # '#|' first or second piece
 # '#*' zero or more pieces
 # '#+' one or more pieces
+# '#<Number> line break 
 OR = '#|'
 ZEROPLUS = '#*'
 ONEPLUS = '#+'

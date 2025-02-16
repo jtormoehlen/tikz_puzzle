@@ -3,106 +3,133 @@
     \node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-mid = len(numbers) // 2
+def merge(left, right):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 1
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-j += 1
+if len(numbers) == 0: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-2
+2a
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect201) at (rect2.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ if len(numbers) < 2:
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+2b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+mid = len(numbers) // 2
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+3
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+return numbers 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+4a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ return None
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+4b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+merged.append(right[j]) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+5a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect501) at (rect5.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ merged.append(right.pop(0))
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+5b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
 merged.append(left[i]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-3a
+6a
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect301) at (rect3.east) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect601) at (rect6.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
  merged.append(left.pop(0))
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-3b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-return merged
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-4
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-i += 1
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-5
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-right = mergesort(right)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-6
+6b
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-def merge(left, right):
+left = mergesort(left)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 7
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-while left and right: 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect801) at (rect8.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- while i < len(left) and j < len(right):
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-def mergesort(numbers):
+if left[i] <= right[j]:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-9
+8
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+left = list(numbers[:mid]) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+9a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect901) at (rect9.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ left = numbers[:mid]
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+9b
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return numbers 
+return merge(left, right) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -111,7 +138,7 @@ return numbers
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1001) at (rect10.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return None
+ merge(left, right)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -120,7 +147,7 @@ return numbers
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-right = numbers[mid:] 
+while left and right: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -129,16 +156,16 @@ right = numbers[mid:]
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1101) at (rect11.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- right = list(numbers[mid:])
+ while i < len(left) and j < len(right):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 11b
 \end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect12) at (rect11.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect12) at (rect11.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-merged.extend(right[j:]) 
+right = mergesort(right)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -147,34 +174,25 @@ merged.extend(right[j:])
 };\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect13) at (rect12.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-merged.extend(left[i:]) 
+merged.extend(right[j:]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 13
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-merged.append(right[j]) 
+merged.extend(left[i:]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-14a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1401) at (rect14.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- merged.append(right.pop(0))
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-14b
+14
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect15) at (rect14.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-left = mergesort(left)
+def mergesort(numbers):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -183,79 +201,61 @@ left = mergesort(left)
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect16) at (rect15.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-else:
+j += 1
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 16
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect17) at (rect16.south west) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-left = list(numbers[:mid]) 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-17a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1701) at (rect17.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- left = numbers[:mid]
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-17b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect18) at (rect17.south west) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-if len(numbers) == 0: 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-18a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1801) at (rect18.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- if len(numbers) < 2:
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-18b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect19) at (rect18.south west) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-return merge(left, right) 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-19a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1901) at (rect19.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- merge(left, right)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-19b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect20) at (rect19.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect17) at (rect16.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
 i, j = 0, 0
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-20
+17
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect18) at (rect17.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+i += 1
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+18
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect19) at (rect18.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+return merged
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+19
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect20) at (rect19.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+right = numbers[mid:] 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+20a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect2001) at (rect20.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ right = list(numbers[mid:])
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+20b
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect21) at (rect20.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if left[i] <= right[j]:
+else:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}

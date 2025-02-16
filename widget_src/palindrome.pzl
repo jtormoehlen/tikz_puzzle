@@ -1,0 +1,13 @@
+def longest_palindrome(dna, start, end, longest_seq=''):
+    if start >= end:
+        return longest_seq
+    for length in range(2, end - start + 1):
+        subseq = dna[start:start + length]
+        compl = get_compl(subseq)
+        if is_palindromic(subseq) or subseq == compl:
+            if len(subseq) > len(longest_seq):
+                longest_seq = subseq
+    return longest_palindrome(dna, start + 1, end, longest_seq)
+else: return None #distractor
+if start == end: #distractor
+subseq = dna[start:length] #distractor

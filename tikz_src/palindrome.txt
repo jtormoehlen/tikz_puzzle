@@ -1,12 +1,11 @@
-def find_longest_palindromic_sequence(dna, start=0, end=None, longest_seq=''):
-if end is None:
-end = len(dna)
-if start >= end:
+def longest_palindrome(dna, start, end, longest_seq=''):
+if start >= end: #| if start == end:
 return longest_seq
 for length in range(2, end - start + 1):
-subseq = dna[start:start + length]
-complement = get_complement(subseq)
-if is_palindromic(subseq) or subseq == complement:
+subseq = dna[start:start + length] #| subseq = dna[start:length]
+compl = get_compl(subseq)
+if is_palindromic(subseq) or subseq == compl:
 if len(subseq) > len(longest_seq):
 longest_seq = subseq
-return find_longest_palindromic_sequence(dna, start + 1, end, longest_seq)
+return longest_palindrome(dna, start + 1, end, longest_seq)
+else: return None #*

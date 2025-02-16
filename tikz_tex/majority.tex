@@ -3,34 +3,25 @@
     \node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if maj_left == maj_right:
+maj_left = maj_elem(arr, left, mid)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 1
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return 0 
+mid = (left + right) // 2
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-2a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect201) at (rect2.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- return None
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-2b
+2
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-maj_right = maj_elem(arr, mid + 1, right)
+return maj_right
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -39,7 +30,7 @@ maj_right = maj_elem(arr, mid + 1, right)
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if count_left > (right - left + 1) // 2:
+count_right = sum(1 for i in range(left, right + 1) if arr[i] == maj_right)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -48,7 +39,7 @@ if count_left > (right - left + 1) // 2:
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-maj_left = maj_elem(arr, left, mid)
+count_left = sum(1 for i in range(left, right + 1) if arr[i] == maj_left)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -66,34 +57,25 @@ return maj_left
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-count_left = sum(1 for i in range(left, right + 1) if arr[i] == maj_left)
+elif count_right > (right - left + 1) // 2:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 7
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if left == right: 
+maj_right = maj_elem(arr, mid + 1, right)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-8a
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect801) at (rect8.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- if left > right:
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8b
+8
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-else:
+return maj_left   
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -102,25 +84,34 @@ else:
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-count_right = sum(1 for i in range(left, right + 1) if arr[i] == maj_right)
+def maj_elem(arr, left, right):  
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 10
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return maj_right
+if left == right: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-11
+11a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1101) at (rect11.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ if left > right:
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+11b
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect12) at (rect11.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return maj_left   
+return arr[left]
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -129,25 +120,34 @@ return maj_left
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect13) at (rect12.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return arr[left]
+if count_left > (right - left + 1) // 2:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 13
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-elif count_right > (right - left + 1) // 2:
+return 0 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-14
+14a
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1401) at (rect14.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ return None
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+14b
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect15) at (rect14.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-mid = (left + right) // 2
+if maj_left == maj_right:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -156,7 +156,7 @@ mid = (left + right) // 2
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect16) at (rect15.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-def maj_elem(arr, left, right):  
+else:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
