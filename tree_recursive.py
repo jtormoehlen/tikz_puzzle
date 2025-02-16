@@ -2,56 +2,52 @@ import turtle
 
 
 def draw_blossom():
-    # Turtle initialisieren
     
-    # Farbe setzen
     turtle.color('red')
     
-    # Ausgangsposition speichern
     start_position = turtle.position()
     
-    # Kreis zeichnen
+    # Draw and fill circle
     turtle.begin_fill()
-    turtle.circle(5)  # Zeichnet einen Kreis mit einem Radius von 20
+    turtle.circle(5)
     turtle.end_fill()
 
-    # Zurück zur Ausgangsposition
-    turtle.penup()  # Stift anheben, um nichts zu zeichnen
-    turtle.goto(start_position)  # Zurück zur Ausgangsposition
-    turtle.pendown()  # Stift wieder absenken, falls man weiter zeichnen möchte
+    # Reset position and pen
+    turtle.penup()
+    turtle.goto(start_position)
+    turtle.pendown()
     turtle.color('black')
 
 
 def draw_tree(branch_length, level):
     if level > 0:
-        # Zeichne den Stamm
+        # Stem
         turtle.forward(branch_length)
 
-        # Rechts abzweigen
+        # Branch Right
         turtle.right(45)
         draw_tree(branch_length / 2, level - 1)
 
-        # Links abzweigen
+        # Branch Left
         turtle.left(90)
         draw_tree(branch_length / 2, level - 1)
 
-        # Zurück zum vorherigen Zustand
+        # Reset
         turtle.right(45)
-        # draw_tree(branch_length / 2, level - 1)
-
         turtle.backward(branch_length)
     else:
         draw_blossom()
 
 
 def main():
-    turtle.speed(0)  # Höchste Geschwindigkeit
-    turtle.left(90)  # Stamm nach oben zeigen
+    # Initial position and direction
+    turtle.speed(0)
+    turtle.left(90)
     turtle.penup()
-    turtle.goto(0, -200)  # Von unten nach oben zeichnen
+    turtle.goto(0, -200)
     turtle.pendown()
 
-    draw_tree(300, 7)  # Stamm Länge = 100, Rekursionstiefe = 5
+    draw_tree(300, 7)
 
     turtle.getscreen().getcanvas().postscript(file='img/tree.eps')
 

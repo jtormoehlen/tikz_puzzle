@@ -1,6 +1,8 @@
 # compile trash
 /__pycache__/
 test.py
+/widget_src/test.pzl
+/widget_src_backup/
 
 # graph related project
 graph.py
