@@ -14,10 +14,17 @@ def remove_indents(multi_line_string):
 def shuffle_lines(multi_lines_string):
     # Split string by parts
     lines = multi_lines_string.splitlines()
+    shuffled_list = list(lines)
+    permutation = [i for i in range(0, len(lines))]
+    rd.shuffle(permutation)
+
+    for i, ci in enumerate(permutation):
+        shuffled_list[ci] = lines[i]
+
     # Shuffle lines random
-    rd.shuffle(lines)
+    # rd.shuffle(lines)
     # Merge strings back together
-    return '\n'.join(lines)
+    return '\n'.join(shuffled_list), permutation
 
 
 def conc_lines_suffix(multi_line_string):
@@ -97,7 +104,7 @@ def number_to_letters(n):
         # Correspond numbs with chars
         # (1 -> 'a', 2 -> 'b', ..., 26 -> 'z')
         # Change from 1-based to 0-based
-        n -= 1  
+        # n -= 1  
         # Calculate char from integer
         letters.append(chr(n % 26 + ord('a')))
         # Setup next char
