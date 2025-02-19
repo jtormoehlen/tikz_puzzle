@@ -5,9 +5,9 @@ import util as utl
 # '#*' zero or more pieces
 # '#+' one or more pieces
 # '#<Number> line break 
-OR = '#|'
-ZEROPLUS = '#*'
-ONEPLUS = '#+'
+id_or = '#|'
+id_zeroplus = '#*'
+id_oneplus = '#+'
 
 node = r"""\node[draw,$opt rounded corners, fill=$color!20, minimum width=$lenFac*\rectWidth, minimum height=\rectHeight, anchor=$anch] (rect$recNum) at (rect$prevRec.$susp) {
 \begin{minipage}[c]{$snipLencm}
@@ -22,11 +22,11 @@ $enum
 
 # Source code as string
 tikz_ins = [
-    'binomial',
-    'majority',
-    'mergesort',
     'palindrome',
-    'tree'
+    'binomial',
+    'tree',
+    'majority',
+    'mergesort'
 ]
 
 permutations = []
@@ -58,18 +58,18 @@ for tikz_in in tikz_ins:
     grouped = False
 
     for line in file_content.splitlines():
-        if ZEROPLUS in line:
+        if id_zeroplus in line:
             inputs['$opt'] = 'dashed,'
-            line = line.replace(ZEROPLUS, '')
+            line = line.replace(id_zeroplus, '')
             # inputs['$color'] = 'red'
-        elif ONEPLUS in line:
+        elif id_oneplus in line:
             inputs['$opt'] = 'dashed,'
-            line = line.replace(ONEPLUS, '')
+            line = line.replace(id_oneplus, '')
         else:
             inputs['$opt'] = ''
             # inputs['$color'] = 'blue'
 
-        parts = line.split(OR)
+        parts = line.split(id_or)
         if len(parts) == 2:
             grouped = True
         else:
@@ -77,20 +77,21 @@ for tikz_in in tikz_ins:
 
         if grouped:
             left_node = node
-            left_node_inputs = {'$recNum': inputs['$recNum'], 
-                                '$prevRec': inputs['$prevRec'],
-                                '$xpos': 0, 
-                                '$ypos': 0,
-                                '$enum': str(inputs['$enum']) + 
-                                    utl.number_to_letters(1),
-                                '$snippet': parts[0],
-                                '$numLen': inputs['$numLen'], 
-                                '$snipLen': 6.5,
-                                '$anch': inputs['$anch'], 
-                                '$susp': inputs['$susp'],
-                                '$lenFac': 0.5, 
-                                '$opt': inputs['$opt'],
-                                '$color': inputs['$color']}
+            left_node_inputs = {
+                '$recNum': inputs['$recNum'],
+                '$prevRec': inputs['$prevRec'],
+                '$xpos': 0,
+                '$ypos': 0,
+                '$enum': str(inputs['$enum']) + utl.number_to_letters(1),
+                '$snippet': parts[0],
+                '$numLen': inputs['$numLen'],
+                '$snipLen': 6.5,
+                '$anch': inputs['$anch'],
+                '$susp': inputs['$susp'],
+                '$lenFac': 0.5,
+                '$opt': inputs['$opt'],
+                '$color': inputs['$color']
+            }
 
             for key, value in left_node_inputs.items():
                 left_node = left_node.replace(key, str(value))
@@ -99,24 +100,25 @@ for tikz_in in tikz_ins:
             outputs.append(left_node)
 
             right_node = node
-            right_node_inputs = {'$recNum': inputs['$recNum']*100+1,
-                                '$prevRec': inputs['$recNum'],
-                                '$xpos': 0,
-                                '$ypos': 0,
-                                '$enum': str(inputs['$enum']) +
-                                    utl.number_to_letters(2),
-                                '$snippet': parts[1],
-                                '$numLen': inputs['$numLen'],
-                                '$snipLen': 6.5,
-                                '$anch': 'west',
-                                '$susp': 'east',
-                                '$lenFac': 0.5,
-                                '$opt': inputs['$opt'],
-                                '$color': inputs['$color']}
+            right_node_inputs = {
+                '$recNum': inputs['$recNum'] * 100 + 1,
+                '$prevRec': inputs['$recNum'],
+                '$xpos': 0,
+                '$ypos': 0,
+                '$enum': str(inputs['$enum']) + utl.number_to_letters(2),
+                '$snippet': parts[1],
+                '$numLen': inputs['$numLen'],
+                '$snipLen': 6.5,
+                '$anch': 'west',
+                '$susp': 'east',
+                '$lenFac': 0.5,
+                '$opt': inputs['$opt'],
+                '$color': inputs['$color']
+            }
 
             for key, value in right_node_inputs.items():
                 right_node = right_node.replace(key, str(value))
-
+            
             right_node = utl.edit_pattern(right_node)
             outputs.append(right_node)
 

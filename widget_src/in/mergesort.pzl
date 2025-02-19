@@ -17,11 +17,14 @@ def merge(left, right):
         else:
             merged.append(right[j])
             j += 1
-    merged.extend(left[i:]) #*
-    merged.extend(right[j:]) #*
+    merged.extend(left[i:])
+    merged.extend(right[j:])
     return merged
-return None #distractor
+mid = len(numbers) / 2 #distractor
 if len(numbers) == 0: #distractor
+return None #distractor
+mergesort(left) #distractor
+mergesort(right) #distractor
 merge(left, right) #distractor
 merged.append(left.pop(0)) #distractor
 merged.append(right.pop(0)) #distractor
