@@ -1,9 +1,9 @@
 
 def binom(i, j):
-    if j == 0 or j == i:
-        return 1
+    if j == 0 or j == i:  # i == 0 or i == j
+        return 1  # return 0
     else:
-        return binom(i-1, j-1) + binom(i-1, j)
+        return binom(i-1, j-1) + binom(i-1, j) 
 
 def rec_sum(numbers):
     if not numbers:

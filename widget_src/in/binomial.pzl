@@ -8,16 +8,13 @@ def sum_rec(numbers):
         return 0
     else:
         return numbers[0] + sum_rec(numbers[1:])
-    inner_sum = int()
-    for i in range(2, n):
-        inner_sum += sum_rec([binom(i, j) for i in range(1, j)])
-def binom(j, i): #distractor
-if j == 1 or j == i+1: #distractor
-else: #distractor
+inner_sum = int()
+for i in range(2, n):
+    inner_sum += sum_rec([binom(i, j) for i in range(1, j)])
+if i == 0 or i == j: #distractor
 return binom(i, j-1) + binom(i-1, j-1) #distractor
 if numbers: #distractor
 return numbers[0] + numbers[-1] + sum_rec(numbers[1:-1]) #distractor
-inner_sum = 1 #distractor
 for j in range(2, n): #distractor
 inner_sum += sum_rec([binom(i, j) for j in range(1, i)]) #distractor
 numbers = numbers[1:-1] #distractor
