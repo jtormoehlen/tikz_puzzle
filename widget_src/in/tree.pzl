@@ -10,5 +10,13 @@ def draw_tree(branch_length, level):
 myTurtle.right(270)
 myTurtle.backward(300)
 draw_tree(300, 7)
+if level == 0: #distractor
+myTurtle.forward(branch_length / 2) #distractor
+myTurtle.right(30) #distractor
+draw_tree(branch_length / 2, level) #distractor 
+myTurtle.left(60) #distractor
+draw_tree(branch_length / 2, level) #distractor
+myTurtle.right(30) #distractor
+myTurtle.backward(branch_length / 2) #distractor
+level -= 1 #distractor
 else: #distractor
-return turtle.forward(length / 2) #distractor

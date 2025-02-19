@@ -1,57 +1,51 @@
-import turtle
+import turtle as myTurtle
 
 
 def draw_blossom():
     
-    turtle.color('red')
+    myTurtle.color('red')
     
-    start_position = turtle.position()
+    start_position = myTurtle.position()
     
     # Draw and fill circle
-    turtle.begin_fill()
-    turtle.circle(5)
-    turtle.end_fill()
+    myTurtle.begin_fill()
+    myTurtle.circle(5)
+    myTurtle.end_fill()
 
     # Reset position and pen
-    turtle.penup()
-    turtle.goto(start_position)
-    turtle.pendown()
-    turtle.color('black')
+    myTurtle.penup()
+    myTurtle.goto(start_position)
+    myTurtle.pendown()
+    myTurtle.color('black')
 
 
 def draw_tree(branch_length, level):
-    if level > 0:
-        # Stem
-        turtle.forward(branch_length)
-
-        # Branch Right
-        turtle.right(45)
-        draw_tree(branch_length / 2, level - 1)
-
-        # Branch Left
-        turtle.left(90)
-        draw_tree(branch_length / 2, level - 1)
-
-        # Reset
-        turtle.right(45)
-        turtle.backward(branch_length)
-    else:
+    if level > 0:  # if level == 0: #distractor
+        myTurtle.forward(branch_length)  # myTurtle.forward(branch_length / 2) #distractor
+        myTurtle.right(45)  # myTurtle.right(30) #distractor
+        draw_tree(branch_length / 2, level - 1)  # draw_tree(branch_length / 2, level) #distractor 
+        myTurtle.left(90)  # myTurtle.left(60) #distractor
+        draw_tree(branch_length / 2, level - 1)  # draw_tree(branch_length / 2, level) #distractor
+        myTurtle.right(45)  # myTurtle.right(30) #distractor 
+        myTurtle.backward(branch_length)  # myTurtle.backward(branch_length / 2)
+        # level -= 1
+    else:  # opt
         draw_blossom()
 
 
 def main():
     # Initial position and direction
-    turtle.speed(0)
-    turtle.left(90)
-    turtle.penup()
-    turtle.goto(0, -200)
-    turtle.pendown()
+    myTurtle.speed(0)
+    myTurtle.left(90)
+    myTurtle.penup()
+    myTurtle.goto(0, -200)
+    myTurtle.pendown()
 
     draw_tree(300, 7)
 
-    turtle.getscreen().getcanvas().postscript(file='img/tree.eps')
+    myTurtle.getscreen().getcanvas().postscript(file='img/tree.eps')
 
-    turtle.done()
+    myTurtle.done()
 
 
 if __name__ == "__main__":

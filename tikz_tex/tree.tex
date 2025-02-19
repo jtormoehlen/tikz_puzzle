@@ -1,130 +1,175 @@
 \begin{tikzpicture}
 
-    \node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
-\begin{minipage}[c]{14.5cm}
+    \node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.left(90)
+draw_tree(branch_length / 2, level - 1) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-0
+0b
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect101) at (rect1.east) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.backward(branch_length)
+ draw_tree(branch_length / 2, level)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-1
+0c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.right(45)
+myTurtle.right(45) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-2
+1b
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect201) at (rect2.east) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.right(270)
+ myTurtle.right(30)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-3
+1c
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+myTurtle.forward(branch_length) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+2b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect301) at (rect3.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ myTurtle.forward(branch_length / 2)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+2c
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+myTurtle.right(45) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+3b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ myTurtle.right(30) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+3c
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.right(45)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-4
-\end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-else: 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-5
-\end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-return turtle.forward(length / 2) 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-6
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-if level > 0:
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-7
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.forward(branch_length)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-draw_tree(branch_length / 2, level - 1)
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-9
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
 def draw_tree(branch_length, level):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-10
+4
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect12) at (rect11.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-draw_tree(branch_length / 2, level - 1)
+if level > 0: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-11
+5b
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect13) at (rect12.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect601) at (rect6.east) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-draw_tree(300, 7)
+ if level == 0:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-12
+5c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-myTurtle.backward(300)
+myTurtle.left(90) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-13
+6b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect701) at (rect7.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ myTurtle.left(60)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+6c
+\end{minipage}
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+level -= 1 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+7
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+draw_tree(branch_length / 2, level - 1) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+8b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect901) at (rect9.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ draw_tree(branch_length / 2, level) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+8c
+\end{minipage}
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+else: 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+9
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+myTurtle.backward(branch_length) 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+10b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1101) at (rect11.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ myTurtle.backward(branch_length / 2)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+10c
 \end{minipage}
 };
 

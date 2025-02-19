@@ -1,14 +1,11 @@
 def draw_tree(branch_length, level):
-if level > 0:
-myTurtle.forward(branch_length)
-myTurtle.right(45)
-draw_tree(branch_length / 2, level - 1)
-myTurtle.left(90)
-draw_tree(branch_length / 2, level - 1)
-myTurtle.right(45)
-myTurtle.backward(branch_length)
-myTurtle.right(270)
-myTurtle.backward(300)
-draw_tree(300, 7)
+if level > 0: #| if level == 0:
+myTurtle.forward(branch_length) #| myTurtle.forward(branch_length / 2)
+myTurtle.right(45) #| myTurtle.right(30)
+draw_tree(branch_length / 2, level - 1) #| draw_tree(branch_length / 2, level) 
+myTurtle.left(90) #| myTurtle.left(60)
+draw_tree(branch_length / 2, level - 1) #| draw_tree(branch_length / 2, level)
+myTurtle.right(45) #| myTurtle.right(30) 
+myTurtle.backward(branch_length) #| myTurtle.backward(branch_length / 2)
 else: #*
-return turtle.forward(length / 2) #*
+level -= 1 #*
