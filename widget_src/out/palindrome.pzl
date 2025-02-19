@@ -1,13 +1,17 @@
-"def longest_palindrome(dna, start, end, longest_seq=''): # 11\n" +
-"    if start >= end:                                  # 12\n" +
-"        return longest_seq                                # 7\n" +
-"    for length in range(2, end - start + 1):          # 4\n" +
-"        subseq = dna[start:start + length]                # 6\n" +
-"        compl = get_compl(subseq)                         # 13\n" +
-"        if is_palindromic(subseq) or subseq == compl:     # 1\n" +
-"            if len(subseq) > len(longest_seq):                # 10\n" +
-"                longest_seq = subseq                              # 3\n" +
+"def is_palindromic(seq):                          # 15\n" +
+"    return seq == get_compl(seq[::-1])                # 14\n" +
+"def longest_palindrome(dna, start, end, longest_seq=''): # 6\n" +
+"    if start >= end:                                  # 10\n" +
+"        return longest_seq                                # 11\n" +
+"    for length in range(2, end - start + 1):          # 7\n" +
+"        subseq = dna[start:start + length]                # 4\n" +
+"        if is_palindromic(subseq):                        # 16\n" +
+"            if len(subseq) > len(longest_seq):                # 3\n" +
+"                longest_seq = subseq                              # 8\n" +
 "    return longest_palindrome(dna, start + 1, end, longest_seq) # 5\n" +
-"else: return None #distractor                     # 2\n" +
-"if start == end: #distractor                      # 9\n" +
-"subseq = dna[start:length] #distractor             # 8\n" +
+"return seq == seq[::-1] #distractor               # 12\n" +
+"if start < end: #distractor                       # 1\n" +
+"return '' #distractor                             # 17\n" +
+"subseq = dna[start:length] #distractor            # 2\n" +
+"return subseq #distractor                         # 13\n" +
+"return longest_palindrome(dna, start + 1, end - 1, longest_seq) #distractor # 9\n" +
