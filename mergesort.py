@@ -1,19 +1,19 @@
 import random as rnd
 
 def mergesort(numbers):
-    mid = len(numbers) // 2  # mid = len(numbers) / 2
+    mid = len(numbers) // 2  # mid = len(numbers) / 2 #distractor
     
 
-    if len(numbers) < 2:  # if len(numbers) == 0:
-        return numbers  # return None
+    if len(numbers) < 2:  # if len(numbers) == 0: #distractor
+        return numbers  # return None #distractor
 
     left = list(numbers[:mid])
     right = list(numbers[mid:])
 
-    left = mergesort(left)  # mergesort(left)
-    right = mergesort(right)  # mergesort(right)
+    left = mergesort(left)  # mergesort(left) #distractor
+    right = mergesort(right)  # mergesort(right) #distractor
 
-    return merge(left, right)  # merge(left, right)
+    return merge(left, right)  # merge(left, right) #distractor
 
 def merge(left, right):
     merged = []
@@ -21,10 +21,10 @@ def merge(left, right):
 
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
-            merged.append(left[i])  # merged.append(left.pop(0))
+            merged.append(left[i])  # merged.append(left.pop(0)) #distractor
             i += 1
         else:
-            merged.append(right[j])  # merged.append(right.pop(0))
+            merged.append(right[j])  # merged.append(right.pop(0)) #distractor
             j += 1
 
     merged.extend(left[i:])  # opt
