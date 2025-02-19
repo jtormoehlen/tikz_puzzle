@@ -1,11 +1,11 @@
+def is_palindromic(seq):
+return seq == get_compl(seq[::-1]) #| return seq == seq[::-1]
 def longest_palindrome(dna, start, end, longest_seq=''):
-if start >= end: #| if start == end:
-return longest_seq
+if start >= end: #| if start < end:
+return longest_seq #| return ''
 for length in range(2, end - start + 1):
 subseq = dna[start:start + length] #| subseq = dna[start:length]
-compl = get_compl(subseq)
-if is_palindromic(subseq) or subseq == compl:
+if is_palindromic(subseq):
 if len(subseq) > len(longest_seq):
-longest_seq = subseq
-return longest_palindrome(dna, start + 1, end, longest_seq)
-else: return None #*
+longest_seq = subseq #| return subseq
+return longest_palindrome(dna, start + 1, end, longest_seq) #| return longest_palindrome(dna, start + 1, end - 1, longest_seq)
