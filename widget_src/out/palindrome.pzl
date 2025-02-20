@@ -1,17 +1,17 @@
-"def is_palindromic(seq):                          # 16\n" +
-"    return seq == get_compl(seq[::-1])                # 11\n" +
+"def is_palindromic(seq):                          # 10\n" +
+"    return seq == get_compl(seq[::-1])                # 12\n" +
 "def longest_palindrome(dna, start, end, longest_seq=''): # 8\n" +
-"    if start >= end:                                  # 9\n" +
-"        return longest_seq                                # 13\n" +
-"    for length in range(2, end - start + 1):          # 5\n" +
-"        subseq = dna[start:start + length]                # 4\n" +
+"    if start >= end:                                  # 7\n" +
+"        return longest_seq                                # 17\n" +
+"    for length in range(2, end - start + 1):          # 6\n" +
+"        subseq = dna[start:start + length]                # 13\n" +
 "        if is_palindromic(subseq):                        # 3\n" +
-"            if len(subseq) > len(longest_seq):                # 12\n" +
+"            if len(subseq) > len(longest_seq):                # 5\n" +
 "                longest_seq = subseq                              # 1\n" +
-"    return longest_palindrome(dna, start + 1, end, longest_seq) # 7\n" +
-"return seq == seq[::-1] #distractor               # 2\n" +
-"if start < end: #distractor                       # 10\n" +
-"return '' #distractor                             # 6\n" +
-"subseq = dna[start:length] #distractor            # 15\n" +
-"return subseq #distractor                         # 14\n" +
-"return longest_palindrome(dna, start + 1, end - 1, longest_seq) #distractor # 17\n" +
+"    return longest_palindrome(dna, start + 1, end, longest_seq) # 14\n" +
+"return seq == seq[::-1] #distractor               # 11\n" +
+"if start < end: #distractor                       # 9\n" +
+"return '' #distractor                             # 16\n" +
+"subseq = dna[start:length] #distractor            # 4\n" +
+"return subseq #distractor                         # 15\n" +
+"return longest_palindrome(dna, start + 1, end - 1, longest_seq) #distractor # 2\n" +

@@ -1,22 +1,22 @@
 def draw_tree(branch_length, level):
     if level > 0:
-        myTurtle.forward(branch_length)
-        myTurtle.right(45)
+        turtle.forward(branch_length)
+        turtle.right(45)
         draw_tree(branch_length / 2, level - 1)
-        myTurtle.left(90)
+        turtle.left(90)
         draw_tree(branch_length / 2, level - 1)
-        myTurtle.right(45)
-        myTurtle.backward(branch_length)
-myTurtle.right(270)
-myTurtle.backward(300)
+        turtle.right(45)
+        turtle.backward(branch_length)
+turtle.right(270)
+turtle.backward(300)
 draw_tree(300, 7)
 if level == 0: #distractor
-myTurtle.forward(branch_length / 2) #distractor
-myTurtle.right(30) #distractor
+turtle.forward(branch_length / 2) #distractor
+turtle.right(30) #distractor
 draw_tree(branch_length / 2, level) #distractor 
-myTurtle.left(60) #distractor
+turtle.left(60) #distractor
 draw_tree(branch_length / 2, level) #distractor
-myTurtle.right(30) #distractor
-myTurtle.backward(branch_length / 2) #distractor
+turtle.right(30) #distractor
+turtle.backward(branch_length / 2) #distractor
 level -= 1 #distractor
 else: #distractor

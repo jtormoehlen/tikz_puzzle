@@ -1,22 +1,22 @@
-"def draw_tree(branch_length, level):              # 19\n" +
-"    if level > 0:                                     # 17\n" +
-"        myTurtle.forward(branch_length)                   # 11\n" +
-"        myTurtle.right(45)                                # 10\n" +
-"        draw_tree(branch_length / 2, level - 1)           # 14\n" +
-"        myTurtle.left(90)                                 # 7\n" +
-"        draw_tree(branch_length / 2, level - 1)           # 22\n" +
-"        myTurtle.right(45)                                # 21\n" +
-"        myTurtle.backward(branch_length)                  # 12\n" +
-"myTurtle.right(270)                               # 18\n" +
-"myTurtle.backward(300)                            # 5\n" +
-"draw_tree(300, 7)                                 # 3\n" +
-"if level == 0: #distractor                        # 20\n" +
-"myTurtle.forward(branch_length / 2) #distractor   # 13\n" +
-"myTurtle.right(30) #distractor                    # 6\n" +
-"draw_tree(branch_length / 2, level) #distractor   # 9\n" +
-"myTurtle.left(60) #distractor                     # 4\n" +
-"draw_tree(branch_length / 2, level) #distractor   # 1\n" +
-"myTurtle.right(30) #distractor                    # 15\n" +
-"myTurtle.backward(branch_length / 2) #distractor  # 8\n" +
-"level -= 1 #distractor                            # 2\n" +
-"else: #distractor                                  # 16\n" +
+"def draw_tree(branch_length, level):              # 1\n" +
+"    if level > 0:                                     # 6\n" +
+"        turtle.forward(branch_length)                     # 4\n" +
+"        turtle.right(45)                                  # 22\n" +
+"        draw_tree(branch_length / 2, level - 1)           # 10\n" +
+"        turtle.left(90)                                   # 18\n" +
+"        draw_tree(branch_length / 2, level - 1)           # 8\n" +
+"        turtle.right(45)                                  # 15\n" +
+"        turtle.backward(branch_length)                    # 17\n" +
+"turtle.right(270)                                 # 14\n" +
+"turtle.backward(300)                              # 12\n" +
+"draw_tree(300, 7)                                 # 19\n" +
+"if level == 0: #distractor                        # 21\n" +
+"turtle.forward(branch_length / 2) #distractor     # 9\n" +
+"turtle.right(30) #distractor                      # 5\n" +
+"draw_tree(branch_length / 2, level) #distractor   # 7\n" +
+"turtle.left(60) #distractor                       # 16\n" +
+"draw_tree(branch_length / 2, level) #distractor   # 3\n" +
+"turtle.right(30) #distractor                      # 11\n" +
+"turtle.backward(branch_length / 2) #distractor    # 2\n" +
+"level -= 1 #distractor                            # 13\n" +
+"else: #distractor                                  # 20\n" +
