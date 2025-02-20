@@ -1,30 +1,30 @@
 "def mergesort(numbers):                           # 27\n" +
-"    mid = len(numbers) // 2                           # 25\n" +
-"    if len(numbers) < 2:                              # 14\n" +
-"        return numbers                                    # 23\n" +
-"    left = list(numbers[:mid])                        # 22\n" +
-"    right = list(numbers[mid:])                       # 26\n" +
-"    left = mergesort(left)                            # 13\n" +
-"    right = mergesort(right)                          # 3\n" +
-"    return merge(left, right)                         # 19\n" +
-"def merge(left, right):                           # 10\n" +
-"    merged = []                                       # 29\n" +
-"    i, j = 0, 0                                       # 21\n" +
-"    while i < len(left) and j < len(right):           # 28\n" +
-"        if left[i] <= right[j]:                           # 12\n" +
-"            merged.append(left[i])                            # 2\n" +
-"            i += 1                                            # 24\n" +
-"        else:                                             # 30\n" +
-"            merged.append(right[j])                           # 5\n" +
-"            j += 1                                            # 15\n" +
-"    merged.extend(left[i:])                           # 8\n" +
+"    mid = len(numbers) // 2                           # 9\n" +
+"    if len(numbers) < 2:                              # 11\n" +
+"        return numbers                                    # 4\n" +
+"    left = list(numbers[:mid])                        # 21\n" +
+"    right = list(numbers[mid:])                       # 7\n" +
+"    left = mergesort(left)                            # 24\n" +
+"    right = mergesort(right)                          # 16\n" +
+"    return merge(left, right)                         # 23\n" +
+"def merge(left, right):                           # 26\n" +
+"    merged = []                                       # 1\n" +
+"    i, j = 0, 0                                       # 25\n" +
+"    while i < len(left) and j < len(right):           # 2\n" +
+"        if left[i] <= right[j]:                           # 18\n" +
+"            merged.append(left[i])                            # 28\n" +
+"            i += 1                                            # 14\n" +
+"        else:                                             # 17\n" +
+"            merged.append(right[j])                           # 8\n" +
+"            j += 1                                            # 12\n" +
+"    merged.extend(left[i:])                           # 13\n" +
 "    merged.extend(right[j:])                          # 6\n" +
-"    return merged                                     # 7\n" +
-"mid = len(numbers) / 2 #distractor                # 1\n" +
-"if len(numbers) == 0: #distractor                 # 9\n" +
+"    return merged                                     # 3\n" +
+"mid = len(numbers) / 2 #distractor                # 10\n" +
+"if len(numbers) == 0: #distractor                 # 19\n" +
 "return None #distractor                           # 20\n" +
-"mergesort(left) #distractor                       # 4\n" +
-"mergesort(right) #distractor                      # 11\n" +
-"merge(left, right) #distractor                    # 16\n" +
-"merged.append(left.pop(0)) #distractor            # 17\n" +
-"merged.append(right.pop(0)) #distractor            # 18\n" +
+"mergesort(left) #distractor                       # 5\n" +
+"mergesort(right) #distractor                      # 29\n" +
+"merge(left, right) #distractor                    # 30\n" +
+"merged.append(left.pop(0)) #distractor            # 22\n" +
+"merged.append(right.pop(0)) #distractor            # 15\n" +
