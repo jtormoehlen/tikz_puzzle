@@ -1,16 +1,16 @@
-def maj_elem(arr, left, right):  
-if left == right: #| if left > right:
-return arr[left]
+def maj_elem(numbers, left, right):
+if left == right: #| if left >= right:
+return numbers[left] #| return None
 mid = (left + right) // 2
-maj_left = maj_elem(arr, left, mid)
-maj_right = maj_elem(arr, mid + 1, right)
-if maj_left == maj_right:
-return maj_left   
-count_left = sum(1 for i in range(left, right + 1) if arr[i] == maj_left)
-count_right = sum(1 for i in range(left, right + 1) if arr[i] == maj_right)
+maj_left = maj_elem(numbers, left, mid) #| maj_elem(numbers, left, mid)
+maj_right = maj_elem(numbers, mid + 1, right) #| maj_elem(numbers, mid + 1, right)
+if maj_left == maj_right: #| if maj_left != maj_right:
+return maj_left #| return None
+count_left = sum(1 for i in range(left, right + 1) if numbers[i] == maj_left)
+count_right = sum(1 for i in range(left, right + 1) if numbers[i] == maj_right)
 if count_left > (right - left + 1) // 2:
 return maj_left
 elif count_right > (right - left + 1) // 2:
 return maj_right
 else:
-return 0 #| return None
+return None
