@@ -1,22 +1,22 @@
 "def maj_elem(numbers, left, right):               # 13\n" +
-"    if left == right:                                 # 9\n" +
-"        return numbers[left]                              # 20\n" +
-"    mid = (left + right) // 2                         # 21\n" +
-"    maj_left = maj_elem(numbers, left, mid)           # 4\n" +
-"    maj_right = maj_elem(numbers, mid + 1, right)     # 3\n" +
-"    if maj_left == maj_right:                         # 17\n" +
+"    if left == right:                                 # 16\n" +
+"        return numbers[left]                              # 6\n" +
+"    mid = (left + right) // 2                         # 4\n" +
+"    maj_left = maj_elem(numbers, left, mid)           # 2\n" +
+"    maj_right = maj_elem(numbers, mid + 1, right)     # 22\n" +
+"    if maj_left == maj_right:                         # 5\n" +
+"        return maj_left                                   # 12\n" +
+"    count_left = sum(1 for i in range(left, right + 1) if numbers[i] == maj_left) # 3\n" +
+"    count_right = sum(1 for i in range(left, right + 1) if numbers[i] == maj_right) # 18\n" +
+"    if count_left > (right - left + 1) // 2:          # 20\n" +
 "        return maj_left                                   # 19\n" +
-"    count_left = sum(1 for i in range(left, right + 1) if numbers[i] == maj_left) # 14\n" +
-"    count_right = sum(1 for i in range(left, right + 1) if numbers[i] == maj_right) # 6\n" +
-"    if count_left > (right - left + 1) // 2:          # 22\n" +
-"        return maj_left                                   # 8\n" +
-"    elif count_right > (right - left + 1) // 2:       # 2\n" +
-"        return maj_right                                  # 1\n" +
-"    else:                                             # 16\n" +
-"        return None                                       # 10\n" +
-"if left >= right: #distractor                     # 15\n" +
-"return None #distractor                           # 11\n" +
-"maj_elem(numbers, left, mid) #distractor          # 7\n" +
-"maj_elem(numbers, mid + 1, right) #distractor     # 12\n" +
-"if maj_left != maj_right: #distractor             # 18\n" +
-"return None #distractor                            # 5\n" +
+"    elif count_right > (right - left + 1) // 2:       # 7\n" +
+"        return maj_right                                  # 15\n" +
+"    else:                                             # 1\n" +
+"        return None                                       # 14\n" +
+"if left >= right: #distractor                     # 21\n" +
+"return None #distractor                           # 10\n" +
+"maj_elem(numbers, left, mid) #distractor          # 8\n" +
+"maj_elem(numbers, mid + 1, right) #distractor     # 9\n" +
+"if maj_left != maj_right: #distractor             # 17\n" +
+"return None #distractor                            # 11\n" +

@@ -3,7 +3,7 @@
     \node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return 1 
+if numbers: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -12,16 +12,16 @@ return 1
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect101) at (rect1.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return 0
+ if not numbers:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 0c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-def rec_sum(numbers):
+else: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -30,7 +30,7 @@ def rec_sum(numbers):
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return binom(i-1, j-1) + binom(i-1, j) 
+total_sum += rec_sum([binom(i, j) for j in range(1, i)]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -39,61 +39,70 @@ return binom(i-1, j-1) + binom(i-1, j)
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect301) at (rect3.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return binom(i, j-1) + binom(i-1, j-1)
+ total_sum += rec_sum([binom(i, j) for i in range(1, j)])
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 2c
 \end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-numbers = numbers[1:-1] 
+if i == 0 or i == j: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-3
+3b
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-def binom(i, j):
+ if j == 0 or j == i:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-4
+3c
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+for i in range(2, n): 
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+4b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect501) at (rect5.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ for j in range(2, n):
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+4c
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-total_sum = int()
+return 0
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 5
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return numbers[0] + rec_sum(numbers[1:]) 
+else: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-6b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect701) at (rect7.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- return numbers[0] + numbers[-1] + rec_sum(numbers[1:-1])
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-6c
+6
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if numbers: 
+return 1 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -102,43 +111,43 @@ if numbers:
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect801) at (rect8.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- if not numbers:
+ return 0
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 7c
 \end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-else: 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-for i in range(2, n): 
+return binom(i-1, j-1) + binom(i-1, j) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-9b
+8b
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1001) at (rect10.east) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect901) at (rect9.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- for j in range(2, n):
+ return binom(i, j-1) + binom(i-1, j-1)
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-9c
+8c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return 0
+total_sum = int()
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+9
+\end{minipage}
+};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+numbers = numbers[1:-1] 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -147,7 +156,7 @@ return 0
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect12) at (rect11.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-total_sum += rec_sum([binom(i, j) for j in range(1, i)]) 
+return numbers[0] + rec_sum(numbers[1:]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -156,34 +165,25 @@ total_sum += rec_sum([binom(i, j) for j in range(1, i)])
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1201) at (rect12.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- total_sum += rec_sum([binom(i, j) for i in range(1, j)])
+ return numbers[0] + numbers[-1] + rec_sum(numbers[1:-1])
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 11c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect13) at (rect12.south west) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-if i == 0 or i == j: 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-12b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1301) at (rect13.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- if j == 0 or j == i:
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-12c
-\end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect13) at (rect12.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-else: 
+def binom(i, j):
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+12
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect14) at (rect13.south west) {
+\begin{minipage}[c]{14.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+def rec_sum(numbers):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}

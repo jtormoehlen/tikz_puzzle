@@ -8,8 +8,8 @@ Dieses Projekt besteht aus Python-Skripts, die `.txt`-Dateien mit Python-Code ei
 
 - **Einlesen von .txt-Dateien**: Diese Dateien enthalten Python-Code, aus dem Parsons-Puzzles generiert werden.
 - **Modifier**:
-  - **id_or**: Ermöglicht eine ODER-Verknüpfung von Codezeilen.
-  - **id_zeroplus**: Macht bestimmte Codezeilen optional.
+  - **id_or**: ODER-Verknüpfung von Codezeilen mit dem Suffix `#|`.
+  - **id_opt**: Optionale Codezeilen mit dem Suffix `#*`.
 - **Generierung von TikZ-Puzzles**: Erstellt visuell ansprechende Parsons-Puzzles in TikZ, die in LaTeX-Dokumente integriert werden können.
 - **Einlesen von .pzl-Dateien**: Diese Dateien werden für das js-parsons-Projekt verwendet, um spezielle PPs zu generieren.
 
@@ -37,22 +37,22 @@ pip install -r requirements.txt
 2. Optional können Sie Modifier zu Ihren Codezeilen hinzufügen:
 
     ```python
-    id_zeroplus: print(add(2, 3))
-    id_or: def add(a, b):
+    print(add(2, 3)) #| print(add(3, 6))
+    def add(a, b): #*
     ```
 
 3. Um das Parsons-Puzzle in TikZ zu generieren, führen Sie das Skript aus:
 
     ```bash
-    python generate_tikz.py input.txt output.tex
+    python tikz_puzzle.py input.txt output.tex
     ```
 
 4. Für die Erzeugung einer .pzl-Datei aus einer .txt-Datei verwenden Sie:
 
     ```bash
-    python generate_pzl.py input.txt output.pzl
+    python widget.py input.txt output.pzl
     ```
 
 ## Beispiele
 
-Sie finden einige Beispiele für `.txt`-Dateien und die entsprechenden `.tex`- und `.pzl`-Dateien im Verzeichnis `exercises`.
+Sie finden einige Beispiele für `.txt`-Dateien und die entsprechenden `.tex`- und `.pzl`-Dateien im Verzeichnis `tikz_src` bzw. `tikz_tex` und `widget_src/in`.
