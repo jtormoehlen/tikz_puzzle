@@ -32,6 +32,12 @@ filenames = [
 permutations = []
 
 
+def update_variables(vars):
+    vars['$enum'] = vars['$enum']+1
+    vars['$recNum'] = vars['$recNum']+1
+    vars['$prevRec'] = vars['$prevRec']+1
+
+
 def replace_variables(node, node_vars):
     for key, value in node_vars.items():
         node = node.replace(key, str(value))
@@ -65,6 +71,7 @@ def handle_distractor(vars, parts, codeboxes):
 
 
 def handle_codeline(codeline, vars, codeboxes):
+
     if ident_opt in codeline:
         vars['$opt'] = 'dashed,'
         codeline = codeline.replace(ident_opt, '')
@@ -74,43 +81,29 @@ def handle_codeline(codeline, vars, codeboxes):
         codeline = codeline.replace(ident_plus, '')
     else:
         vars['$opt'] = ''
-            # vars['$color'] = 'blue'
+        # vars['$color'] = 'blue'
 
     parts = codeline.split(ident_or)
-    is_distractor = False
-    if len(parts) == 2:
-        is_distractor = True
-    else:
-        is_distractor = False
+    is_distractor = True if len(parts) == 2 else False
 
     if is_distractor:
         handle_distractor(vars, parts, codeboxes)
     else:
         vars['$snippet'] = codeline
-        root_node = node
-        root_node = replace_variables(root_node, vars)
-        root_node = utl.edit_pattern(root_node)
-        codeboxes.append(root_node)
+        node_root = node
+        node_root = replace_variables(node_root, vars)
+        node_root = utl.edit_pattern(node_root)
+        codeboxes.append(node_root)
 
-    vars['$enum'] = vars['$enum']+1
-    vars['$recNum'] = vars['$recNum']+1
-    vars['$prevRec'] = vars['$prevRec']+1
+    update_variables(vars)
 
 
 def main():
     codelines = utl.read_file('tikz_src/' + filename + '.txt')
-    # print(codelines)
-
     codelines = utl.remove_indents(codelines)
     codelines, permutation = utl.shuffle_lines(codelines)
-    
-    # for i in range(len(permutation)):
-    #     permutation[i] += 1
 
     permutations.append(permutation)
-    # s = verbinde_zeilen_mit_suffix(s)
-    # s = trenne_zeilen_nach_suffix(s)
-    # s = einfuege_zeilenumbruch(s)
 
     codeboxes = []
     vars = {
