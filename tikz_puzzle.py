@@ -47,7 +47,7 @@ def replace_variables(node, node_vars):
 def handle_distractor(vars, parts, codeboxes):
     node_left = node
     node_left_vars = vars.copy()
-    node_left_vars['$enum'] = str(vars['$enum']) + utl.number_to_letters(1)
+    node_left_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(1)
     node_left_vars['$snippet'] = parts[0]
     node_left_vars['$snipLen'] = 6.5
     node_left_vars['$lenFac'] = 0.5
@@ -59,7 +59,7 @@ def handle_distractor(vars, parts, codeboxes):
     node_right_vars = vars.copy()
     node_right_vars['$recNum'] = vars['$recNum'] * 100 + 1
     node_right_vars['$prevRec'] = vars['$recNum']
-    node_right_vars['$enum'] = str(vars['$enum']) + utl.number_to_letters(2)
+    node_right_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(2)
     node_right_vars['$snippet'] = parts[1]
     node_right_vars['$snipLen'] = 6.5
     node_right_vars['$anch'] = 'west'

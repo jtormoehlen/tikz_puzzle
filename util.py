@@ -94,7 +94,7 @@ def split_string(input_string):
         return None
 
 
-def number_to_letters(n):
+def number_to_letter(n):
     if n < 1:
         return ''
 
