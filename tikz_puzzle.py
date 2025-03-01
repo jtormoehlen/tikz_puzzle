@@ -5,9 +5,9 @@ import util as utl
 # '#*' zero or more pieces
 # '#+' one or more pieces
 # '#<Number> line break 
-id_or = '#|'
-id_zeroplus = '#*'
-id_oneplus = '#+'
+ident_or = '#|'
+ident_opt = '#*'
+ident_plus = '#+'
 
 node = r"""\node[draw,$opt rounded corners, fill=$color!20, minimum width=$lenFac*\rectWidth, minimum height=\rectHeight, anchor=$anch] (rect$recNum) at (rect$prevRec.$susp) {
 \begin{minipage}[c]{$snipLencm}
@@ -21,7 +21,7 @@ $enum
 };"""
 
 # Source code as string
-tikz_ins = [
+filenames = [
     'palindrome',
     'binomial',
     'tree',
@@ -31,13 +31,78 @@ tikz_ins = [
 
 permutations = []
 
-for tikz_in in tikz_ins:
 
-    file_content = utl.read_file('tikz_src/' + tikz_in + '.txt')
-    # print(file_content)
+def replace_variables(node, node_vars):
+    for key, value in node_vars.items():
+        node = node.replace(key, str(value))
+    return node
 
-    file_content = utl.remove_indents(file_content)
-    file_content, permutation = utl.shuffle_lines(file_content)
+
+def handle_distractor(vars, parts, codeboxes):
+    node_left = node
+    node_left_vars = vars.copy()
+    node_left_vars['$enum'] = str(vars['$enum']) + utl.number_to_letters(1)
+    node_left_vars['$snippet'] = parts[0]
+    node_left_vars['$snipLen'] = 6.5
+    node_left_vars['$lenFac'] = 0.5
+    node_left = replace_variables(node_left, node_left_vars)
+    node_left = utl.edit_pattern(node_left)
+    codeboxes.append(node_left)
+
+    node_right = node
+    node_right_vars = vars.copy()
+    node_right_vars['$recNum'] = vars['$recNum'] * 100 + 1
+    node_right_vars['$prevRec'] = vars['$recNum']
+    node_right_vars['$enum'] = str(vars['$enum']) + utl.number_to_letters(2)
+    node_right_vars['$snippet'] = parts[1]
+    node_right_vars['$snipLen'] = 6.5
+    node_right_vars['$anch'] = 'west'
+    node_right_vars['$susp'] = 'east'
+    node_right_vars['$lenFac'] = 0.5
+    node_right = replace_variables(node_right, node_right_vars)       
+    node_right = utl.edit_pattern(node_right)
+    codeboxes.append(node_right)
+
+
+def handle_codeline(codeline, vars, codeboxes):
+    if ident_opt in codeline:
+        vars['$opt'] = 'dashed,'
+        codeline = codeline.replace(ident_opt, '')
+        # vars['$color'] = 'red'
+    elif ident_plus in codeline:
+        vars['$opt'] = 'dashed,'
+        codeline = codeline.replace(ident_plus, '')
+    else:
+        vars['$opt'] = ''
+            # vars['$color'] = 'blue'
+
+    parts = codeline.split(ident_or)
+    is_distractor = False
+    if len(parts) == 2:
+        is_distractor = True
+    else:
+        is_distractor = False
+
+    if is_distractor:
+        handle_distractor(vars, parts, codeboxes)
+    else:
+        vars['$snippet'] = codeline
+        root_node = node
+        root_node = replace_variables(root_node, vars)
+        root_node = utl.edit_pattern(root_node)
+        codeboxes.append(root_node)
+
+    vars['$enum'] = vars['$enum']+1
+    vars['$recNum'] = vars['$recNum']+1
+    vars['$prevRec'] = vars['$prevRec']+1
+
+
+def main():
+    codelines = utl.read_file('tikz_src/' + filename + '.txt')
+    # print(codelines)
+
+    codelines = utl.remove_indents(codelines)
+    codelines, permutation = utl.shuffle_lines(codelines)
     
     # for i in range(len(permutation)):
     #     permutation[i] += 1
@@ -47,105 +112,41 @@ for tikz_in in tikz_ins:
     # s = trenne_zeilen_nach_suffix(s)
     # s = einfuege_zeilenumbruch(s)
 
-    outputs = []
-    inputs = {'$recNum': 1, '$prevRec': 0,
-            '$xpos': 0, '$ypos': 0,
-            '$enum': 0, '$snippet': '',
-            '$numLen': 0.5, '$snipLen': 14.5,
-            '$anch': 'north west', '$susp': 'south west',
-            '$lenFac': 1, '$opt': '',
-            '$color': 'lightgray'}
-    grouped = False
+    codeboxes = []
+    vars = {
+        '$recNum': 1,
+        '$prevRec': 0,
+        '$xpos': 0, 
+        '$ypos': 0,
+        '$enum': 0, 
+        '$snippet': '',
+        '$numLen': 0.5, 
+        '$snipLen': 14.5,
+        '$anch': 'north west', 
+        '$susp': 'south west',
+        '$lenFac': 1, 
+        '$opt': '',
+        '$color': 'lightgray'
+    }
+    
+    for codeline in codelines.splitlines():
+        handle_codeline(codeline, vars, codeboxes)
 
-    for line in file_content.splitlines():
-        if id_zeroplus in line:
-            inputs['$opt'] = 'dashed,'
-            line = line.replace(id_zeroplus, '')
-            # inputs['$color'] = 'red'
-        elif id_oneplus in line:
-            inputs['$opt'] = 'dashed,'
-            line = line.replace(id_oneplus, '')
-        else:
-            inputs['$opt'] = ''
-            # inputs['$color'] = 'blue'
+    codeboxes[0] = utl.edit_pattern(
+        codeboxes[0], '(rect1) at (0,0)', r'\((rect1)\) at \((.*?)\)')
+    tikzcode = r"""\begin{tikzpicture}
 
-        parts = line.split(id_or)
-        if len(parts) == 2:
-            grouped = True
-        else:
-            grouped = False
-
-        if grouped:
-            left_node = node
-            left_node_inputs = {
-                '$recNum': inputs['$recNum'],
-                '$prevRec': inputs['$prevRec'],
-                '$xpos': 0,
-                '$ypos': 0,
-                '$enum': str(inputs['$enum']) + utl.number_to_letters(1),
-                '$snippet': parts[0],
-                '$numLen': inputs['$numLen'],
-                '$snipLen': 6.5,
-                '$anch': inputs['$anch'],
-                '$susp': inputs['$susp'],
-                '$lenFac': 0.5,
-                '$opt': inputs['$opt'],
-                '$color': inputs['$color']
-            }
-
-            for key, value in left_node_inputs.items():
-                left_node = left_node.replace(key, str(value))
-
-            left_node = utl.edit_pattern(left_node)
-            outputs.append(left_node)
-
-            right_node = node
-            right_node_inputs = {
-                '$recNum': inputs['$recNum'] * 100 + 1,
-                '$prevRec': inputs['$recNum'],
-                '$xpos': 0,
-                '$ypos': 0,
-                '$enum': str(inputs['$enum']) + utl.number_to_letters(2),
-                '$snippet': parts[1],
-                '$numLen': inputs['$numLen'],
-                '$snipLen': 6.5,
-                '$anch': 'west',
-                '$susp': 'east',
-                '$lenFac': 0.5,
-                '$opt': inputs['$opt'],
-                '$color': inputs['$color']
-            }
-
-            for key, value in right_node_inputs.items():
-                right_node = right_node.replace(key, str(value))
-            
-            right_node = utl.edit_pattern(right_node)
-            outputs.append(right_node)
-
-        else:
-            inputs['$snippet'] = line
-            root_node = node
-
-            for key, value in inputs.items():
-                root_node = root_node.replace(key, str(value))
-
-            root_node = utl.edit_pattern(root_node)
-            outputs.append(root_node)
-
-        inputs['$enum'] = inputs['$enum']+1
-        inputs['$recNum'] = inputs['$recNum']+1
-        inputs['$prevRec'] = inputs['$prevRec']+1
-
-    outputs[0] = utl.edit_pattern(
-        outputs[0], '(rect1) at (0,0)', r'\((rect1)\) at \((.*?)\)')
-    output = r"""\begin{tikzpicture}
-
-    """ + ''.join(outputs) + r"""
+    """ + ''.join(codeboxes) + r"""
 
     \end{tikzpicture}"""
 
-    with open('tikz_tex/' + tikz_in + '.tex', 'w') as tex_file:
-        print(output, file=tex_file)
+    with open('tikz_tex/' + filename + '.tex', 'w') as tex_file:
+        print(tikzcode, file=tex_file)
+
+
+for filename in filenames:
+    main()
+
 
 with open('tikz_tex/solution.txt', 'w') as sol_file:
     for permutation in permutations:

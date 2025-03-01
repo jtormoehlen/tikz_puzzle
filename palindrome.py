@@ -41,8 +41,8 @@ def longest_palindrome(dna, start, end, longest_seq=''):
     return longest_palindrome(dna, start + 1, end, longest_seq)  # return longest_palindrome(dna, start + 1, end - 1, longest_seq) #distractor
 
 # Example DNA sequences
-dna_sequence = "AGCTTAGCAGCTCGAATTCG"
-# dna_sequence = "GTAACTCATGAGTTAC"
+# dna_sequence = "AGCTTAGCAGCTCGAATTCG"
+dna_sequence = "GTAACTCATGAGTTAC"
 # dna_sequence = "XCTAGXXXCTAGX"
 # dna_sequence = "TAT"
 # dna_sequence = "CC"
@@ -50,5 +50,6 @@ dna_sequence = "AGCTTAGCAGCTCGAATTCG"
 # dna_sequence = gernerate_dna_palindrome()
 
 print(dna_sequence)
+print(get_compl(dna_sequence))
 palindromic_sequences = longest_palindrome(dna_sequence, 0, len(dna_sequence))
 print("Längste Palindromische Sequenzen:", palindromic_sequences)

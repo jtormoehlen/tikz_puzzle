@@ -3,7 +3,7 @@
     \node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect1) at (0,0) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if start >= end: 
+subseq = dna[start:start + length] 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -12,34 +12,25 @@ if start >= end:
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect101) at (rect1.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- if start < end:
+ subseq = dna[start:length]
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 0c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect2) at (rect1.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return longest_seq 
+if is_palindromic(subseq):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-1b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect201) at (rect2.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- return ''
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-1c
+1
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect3) at (rect2.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return longest_palindrome(dna, start + 1, end, longest_seq) 
+return seq == get_compl(seq[::-1]) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -48,20 +39,29 @@ return longest_palindrome(dna, start + 1, end, longest_seq)
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect301) at (rect3.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return longest_palindrome(dna, start + 1, end - 1, longest_seq)
+ return seq == seq[::-1]
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 2c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect4) at (rect3.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-for length in range(2, end - start + 1):
+if start >= end: 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-3
+3b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ if start < end:
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+3c
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect5) at (rect4.south west) {
 \begin{minipage}[c]{14.5cm}
@@ -72,19 +72,28 @@ def longest_palindrome(dna, start, end, longest_seq=''):
 \begin{minipage}[c]{0.5cm}
 4
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
-\begin{minipage}[c]{14.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect6) at (rect5.south west) {
+\begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if len(subseq) > len(longest_seq):
+return longest_palindrome(dna, start + 1, end, longest_seq) 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-5
+5b
+\end{minipage}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect601) at (rect6.east) {
+\begin{minipage}[c]{6.5cm}
+\begin{lstlisting}[language=Python, breaklines=true]
+ return longest_palindrome(dna, start + 1, end - 1, longest_seq)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[c]{0.5cm}
+5c
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect7) at (rect6.south west) {
 \begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-if is_palindromic(subseq):
+for length in range(2, end - start + 1):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -93,7 +102,7 @@ if is_palindromic(subseq):
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect8) at (rect7.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-return seq == get_compl(seq[::-1]) 
+longest_seq = subseq 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -102,34 +111,25 @@ return seq == get_compl(seq[::-1])
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect801) at (rect8.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return seq == seq[::-1]
+ return subseq
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 7c
 \end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
-\begin{minipage}[c]{6.5cm}
+};\node[draw, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect9) at (rect8.south west) {
+\begin{minipage}[c]{14.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-subseq = dna[start:start + length] 
+if len(subseq) > len(longest_seq):
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
-8b
-\end{minipage}
-};\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect901) at (rect9.east) {
-\begin{minipage}[c]{6.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
- subseq = dna[start:length]
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-8c
+8
 \end{minipage}
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect10) at (rect9.south west) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
-longest_seq = subseq 
+return longest_seq 
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -138,7 +138,7 @@ longest_seq = subseq
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect1001) at (rect10.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- return subseq
+ return ''
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}

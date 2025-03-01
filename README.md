@@ -8,7 +8,7 @@ Dieses Projekt besteht aus Python-Skripts, die `.txt`-Dateien mit Python-Code ei
 
 - **Einlesen von .txt-Dateien**: Diese Dateien enthalten Python-Code, aus dem Parsons-Puzzles generiert werden.
 - **Modifier**:
-  - **id_or**: ODER-Verknüpfung von Codezeilen mit dem Suffix `#|`.
+  - **id_or**: ODER-Verknüpfung von Codezeilen mit dem Infix `#|`.
   - **id_opt**: Optionale Codezeilen mit dem Suffix `#*`.
 - **Generierung von TikZ-Puzzles**: Erstellt visuell ansprechende Parsons-Puzzles in TikZ, die in LaTeX-Dokumente integriert werden können.
 - **Einlesen von .pzl-Dateien**: Diese Dateien werden für das js-parsons-Projekt verwendet, um spezielle PPs zu generieren.
