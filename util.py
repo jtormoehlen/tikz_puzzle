@@ -16,6 +16,8 @@ def shuffle_lines(multi_lines_string):
     lines = multi_lines_string.splitlines()
     shuffled_list = list(lines)
     permutation = [i for i in range(0, len(lines))]
+
+    rd.seed(42)
     rd.shuffle(permutation)
 
     for i, ci in enumerate(permutation):
@@ -106,7 +108,7 @@ def number_to_letter(n):
         # Change from 1-based to 0-based
         # n -= 1  
         # Calculate char from integer
-        letters.append(chr(n % 26 + ord('a')))
+        letters.append(chr((n - 1) % 26 + ord('a')))
         # Setup next char
         n //= 26
 

@@ -22,11 +22,13 @@ $enum
 
 # Source code as string
 filenames = [
+    'sum',
     'palindrome',
     'binomial',
     'tree',
     'majority',
-    'mergesort'
+    'mergesort',
+    'memo'
 ]
 
 permutations = []
@@ -45,32 +47,32 @@ def replace_variables(node, node_vars):
 
 
 def handle_distractor(vars, parts, codeboxes):
-    node_left = node
-    node_left_vars = vars.copy()
-    node_left_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(1)
-    node_left_vars['$snippet'] = parts[0]
-    node_left_vars['$snipLen'] = 6.5
-    node_left_vars['$lenFac'] = 0.5
-    node_left = replace_variables(node_left, node_left_vars)
-    node_left = utl.edit_pattern(node_left)
-    codeboxes.append(node_left)
+    left = node
+    left_vars = vars.copy()
+    left_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(1)
+    left_vars['$snippet'] = parts[0]
+    left_vars['$snipLen'] = 6.5
+    left_vars['$lenFac'] = 0.5
+    left = replace_variables(left, left_vars)
+    left = utl.edit_pattern(left)
+    codeboxes.append(left)
 
-    node_right = node
-    node_right_vars = vars.copy()
-    node_right_vars['$recNum'] = vars['$recNum'] * 100 + 1
-    node_right_vars['$prevRec'] = vars['$recNum']
-    node_right_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(2)
-    node_right_vars['$snippet'] = parts[1]
-    node_right_vars['$snipLen'] = 6.5
-    node_right_vars['$anch'] = 'west'
-    node_right_vars['$susp'] = 'east'
-    node_right_vars['$lenFac'] = 0.5
-    node_right = replace_variables(node_right, node_right_vars)       
-    node_right = utl.edit_pattern(node_right)
-    codeboxes.append(node_right)
+    right = node
+    right_vars = vars.copy()
+    right_vars['$recNum'] = vars['$recNum'] * 100 + 1
+    right_vars['$prevRec'] = vars['$recNum']
+    right_vars['$enum'] = str(vars['$enum']) + utl.number_to_letter(2)
+    right_vars['$snippet'] = parts[1]
+    right_vars['$snipLen'] = 6.5
+    right_vars['$anch'] = 'west'
+    right_vars['$susp'] = 'east'
+    right_vars['$lenFac'] = 0.5
+    right = replace_variables(right, right_vars)       
+    right = utl.edit_pattern(right)
+    codeboxes.append(right)
 
 
-def handle_codeline(codeline, vars, codeboxes):
+def handle_codeline(codeline, vars, codeblocks):
 
     if ident_opt in codeline:
         vars['$opt'] = 'dashed,'
@@ -87,18 +89,18 @@ def handle_codeline(codeline, vars, codeboxes):
     is_distractor = True if len(parts) == 2 else False
 
     if is_distractor:
-        handle_distractor(vars, parts, codeboxes)
+        handle_distractor(vars, parts, codeblocks)
     else:
         vars['$snippet'] = codeline
-        node_root = node
-        node_root = replace_variables(node_root, vars)
-        node_root = utl.edit_pattern(node_root)
-        codeboxes.append(node_root)
+        root = node
+        root = replace_variables(root, vars)
+        root = utl.edit_pattern(root)
+        codeblocks.append(root)
 
     update_variables(vars)
 
 
-def main():
+def codelines_to_blocks():
     codelines = utl.read_file('tikz_src/' + filename + '.txt')
     codelines = utl.remove_indents(codelines)
     codelines, permutation = utl.shuffle_lines(codelines)
@@ -137,10 +139,10 @@ def main():
         print(tikzcode, file=tex_file)
 
 
-for filename in filenames:
-    main()
+if __name__ == "__main__":
+    for filename in filenames:
+        codelines_to_blocks()
 
-
-with open('tikz_tex/solution.txt', 'w') as sol_file:
-    for permutation in permutations:
-        print(permutation, file=sol_file)
+    with open('tikz_tex/solution.txt', 'w') as sol_file:
+        for permutation in permutations:
+            print(permutation, file=sol_file)

@@ -22,15 +22,15 @@ def draw_blossom():
 def draw_tree(branch_length, level):
     if level > 0:  # if level == 0: #distractor
         myTurtle.forward(branch_length)  # myTurtle.forward(branch_length / 2) #distractor
-        myTurtle.right(45)  # myTurtle.right(30) #distractor
+        myTurtle.right(30)  # myTurtle.right(30) #distractor
         draw_tree(branch_length / 2, level - 1)  # draw_tree(branch_length / 2, level) #distractor 
-        myTurtle.left(90)  # myTurtle.left(60) #distractor
+        myTurtle.left(60)  # myTurtle.left(60) #distractor
         draw_tree(branch_length / 2, level - 1)  # draw_tree(branch_length / 2, level) #distractor
-        myTurtle.right(45)  # myTurtle.right(30) #distractor 
+        myTurtle.right(30)  # myTurtle.right(30) #distractor 
         myTurtle.backward(branch_length)  # myTurtle.backward(branch_length / 2)
         # level -= 1
-    else:  # opt
-        draw_blossom()
+    # else:  # opt
+    #     draw_blossom()
 
 
 def main():
