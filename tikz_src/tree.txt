@@ -1,5 +1,5 @@
 def draw_tree(branch_length, level):
-if level > 0: #| if level == 0:
+if level > 0: #| if level >= 0:
 myTurtle.forward(branch_length) #| myTurtle.forward(branch_length / 2)
 myTurtle.right(45) #| myTurtle.right(30)
 draw_tree(branch_length / 2, level - 1) #| draw_tree(branch_length / 2, level) 
@@ -8,4 +8,3 @@ draw_tree(branch_length / 2, level - 1) #| draw_tree(branch_length / 2, level)
 myTurtle.right(45) #| myTurtle.right(30) 
 myTurtle.backward(branch_length) #| myTurtle.backward(branch_length / 2)
 else: #*
-level -= 1 #*

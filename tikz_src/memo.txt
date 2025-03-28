@@ -1,5 +1,5 @@
-def binom(i, j, memo={}): #| def binom(i, j, memo=()) #distractor
-if (i, j) in memo: #| if {i, j} in memo: #distractor
+def binom(i, j, memo={}): #| def binom(i, j, memo=())
+if (i, j) in memo: #| if {i, j} in memo:
 return memo[i, j]
 if j == 0 or j == i:
 return 1

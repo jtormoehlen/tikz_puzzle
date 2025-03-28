@@ -15,7 +15,6 @@ def maj_elem(numbers, left, right):
     else:
         return None
 if left >= right: #distractor
-return None #distractor
 maj_elem(numbers, left, mid) #distractor
 maj_elem(numbers, mid + 1, right) #distractor
 if maj_left != maj_right: #distractor

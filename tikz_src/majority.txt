@@ -1,6 +1,6 @@
 def maj_elem(numbers, left, right):
 if left == right: #| if left >= right:
-return numbers[left] #| return None
+return numbers[left]
 mid = (left + right) // 2
 maj_left = maj_elem(numbers, left, mid) #| maj_elem(numbers, left, mid)
 maj_right = maj_elem(numbers, mid + 1, right) #| maj_elem(numbers, mid + 1, right)

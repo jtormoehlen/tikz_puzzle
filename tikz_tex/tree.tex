@@ -57,7 +57,7 @@ if level > 0:
 };\node[draw, rounded corners, fill=lightgray!20, minimum width=0.5*\rectWidth, minimum height=\rectHeight, anchor=west] (rect401) at (rect4.east) {
 \begin{minipage}[c]{6.5cm}
 \begin{lstlisting}[language=Python, breaklines=true]
- if level == 0:
+ if level >= 0:
 \end{lstlisting}
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
@@ -161,15 +161,6 @@ draw_tree(branch_length / 2, level - 1)
 \end{minipage}
 \begin{minipage}[c]{0.5cm}
 9b
-\end{minipage}
-};\node[draw,dashed, rounded corners, fill=lightgray!20, minimum width=1*\rectWidth, minimum height=\rectHeight, anchor=north west] (rect11) at (rect10.south west) {
-\begin{minipage}[c]{14.5cm}
-\begin{lstlisting}[language=Python, breaklines=true]
-level -= 1 
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[c]{0.5cm}
-10
 \end{minipage}
 };
 

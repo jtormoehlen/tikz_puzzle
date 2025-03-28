@@ -11,7 +11,5 @@ def longest_palindrome(dna, start, end, longest_seq=''):
     return longest_palindrome(dna, start + 1, end, longest_seq)
 return seq == seq[::-1] #distractor
 if start < end: #distractor
-return '' #distractor
 subseq = dna[start:length] #distractor
-return subseq #distractor
 return longest_palindrome(dna, start + 1, end - 1, longest_seq) #distractor
